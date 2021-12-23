@@ -297,7 +297,7 @@
 - (void)show:(BOOL)animated
 {
     //reset the blurs to the curent screen if need be
-    [self registerForNotificationCenter];
+//    [self registerForNotificationCenter];
     [self setNeedsLayout];
     [self setNeedsDisplay];
     
@@ -343,7 +343,7 @@
 
 - (void)hide:(BOOL)animated
 {
-    [self unregisterFromNotificationCenter];
+//    [self unregisterFromNotificationCenter];
     
     onScreen = NO;
     
@@ -396,36 +396,36 @@
 
 #pragma mark - Notifications
 
-- (void)registerForNotificationCenter {
-    NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
-    [center addObserver:self selector:@selector(deviceOrientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
-}
-
-- (void)unregisterFromNotificationCenter {
-    NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
-    [center removeObserver:self];
-}
-
-- (void)deviceOrientationDidChange:(NSNotification *)notification {
-    UIDeviceOrientation deviceOrientation = [notification.object orientation];
-    
-    if (_shouldAutorotate && UIDeviceOrientationIsValidInterfaceOrientation(deviceOrientation)) {
-        if (UIDeviceOrientationIsPortrait(deviceOrientation)) {
-            if (deviceOrientation == UIDeviceOrientationPortraitUpsideDown) {
-                _orientation = UIInterfaceOrientationPortraitUpsideDown;
-            } else {
-                _orientation = UIInterfaceOrientationPortrait;
-            }
-        } else {
-            if (deviceOrientation == UIDeviceOrientationLandscapeLeft) {
-                _orientation = UIInterfaceOrientationLandscapeLeft;
-            } else {
-                _orientation = UIInterfaceOrientationLandscapeRight;
-            }
-        }
-        [self layoutHUD];
-    }
-}
+//- (void)registerForNotificationCenter {
+//    NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
+//    [center addObserver:self selector:@selector(deviceOrientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
+//}
+//
+//- (void)unregisterFromNotificationCenter {
+//    NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
+//    [center removeObserver:self];
+//}
+//
+//- (void)deviceOrientationDidChange:(NSNotification *)notification {
+//    UIDeviceOrientation deviceOrientation = [notification.object orientation];
+//
+//    if (_shouldAutorotate && UIDeviceOrientationIsValidInterfaceOrientation(deviceOrientation)) {
+//        if (UIDeviceOrientationIsPortrait(deviceOrientation)) {
+//            if (deviceOrientation == UIDeviceOrientationPortraitUpsideDown) {
+//                _orientation = UIInterfaceOrientationPortraitUpsideDown;
+//            } else {
+//                _orientation = UIInterfaceOrientationPortrait;
+//            }
+//        } else {
+//            if (deviceOrientation == UIDeviceOrientationLandscapeLeft) {
+//                _orientation = UIInterfaceOrientationLandscapeLeft;
+//            } else {
+//                _orientation = UIInterfaceOrientationLandscapeRight;
+//            }
+//        }
+//        [self layoutHUD];
+//    }
+//}
 
 #pragma mark Layout
 
